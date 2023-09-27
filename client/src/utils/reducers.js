@@ -1,4 +1,3 @@
-import { useReducer } from 'react';
 import {
   UPDATE_PRODUCTS,
   ADD_TO_CART,
@@ -9,13 +8,21 @@ import {
   UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
   TOGGLE_CART,
-} from './actions';
+} from "./actions";
 
-// TODO: To get a better understand of how a reducer works - add comments to the various actions in the reducer
-export const reducer = (state, action) => {
+const defaultState = {
+  products: [],
+  cart: [],
+  cartOpen: false,
+  categories: [],
+  currentCategory: "",
+};
+
+// Reducers must return new state, not mutate the original state.
+const reducer = (state = defaultState, action) => {
   switch (action.type) {
     // TODO: Add a comment describing the functionality of the UPDATE_PRODUCTS case
-    // Your comment here
+    // Updates the products in the state with new data from action
     case UPDATE_PRODUCTS:
       return {
         ...state,
@@ -49,7 +56,7 @@ export const reducer = (state, action) => {
       };
 
     // TODO: Add a comment describing the functionality of the REMOVE_FROM_CART case
-    // Your comment here
+    //  Removes a product from the shopping cart in the state
     case REMOVE_FROM_CART:
       let newState = state.cart.filter((product) => {
         return product._id !== action._id;
@@ -87,12 +94,10 @@ export const reducer = (state, action) => {
       };
 
     // TODO: Add a comment describing what the default case is for
-    // Your comment here
+    // Returns the current state when no matching action
     default:
       return state;
   }
 };
 
-export function useProductReducer(initialState) {
-  return useReducer(reducer, initialState);
-}
+export default reducer;
