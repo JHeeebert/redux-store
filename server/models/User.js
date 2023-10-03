@@ -1,48 +1,54 @@
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 const { Schema } = mongoose;
-const bcrypt = require('bcrypt');
-const Order = require('./Order');
-
+const Order = require("./Order");
 const userSchema = new Schema({
   firstName: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   lastName: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    // Add a custom validator for email format
+    validate: {
+      validator: function (value) {
+        // You can replace this with a more comprehensive email validation regex
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      },
+      message: "Invalid email format",
+    },
   },
   password: {
     type: String,
     required: true,
-    minlength: 5
+    minlength: 5,
   },
-  orders: [Order.schema]
+  orders: [Order.schema],
 });
-
-// set up pre-save middleware to create password
-userSchema.pre('save', async function(next) {
-  if (this.isNew || this.isModified('password')) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
+// Set up pre-save middleware to create a hashed password
+userSchema.pre("save", async function (next) {
+  try {
+    if (this.isNew || this.isModified("password")) {
+      const saltRounds = 10;
+      this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+    next();
+  } catch (error) {
+    next(error); // Pass the error to the next middleware
   }
-
-  next();
 });
-
-// compare the incoming password with the hashed password
-userSchema.methods.isCorrectPassword = async function(password) {
+// Compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
-
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
