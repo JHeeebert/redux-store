@@ -1,8 +1,8 @@
-# Redux Store
+# Redux Store 🛍️
 ## Description
 As a senior engineer working on an e-commerce platform, I aimed to manage the platform's global state using Redux instead of the Context API. This move enhances the platform's state management, removing it from the React ecosystem.
 ## Table of Contents
-- [Redux Store](#redux-store)
+- [Redux Store 🛍️](#redux-store-️)
   - [Description](#description)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
@@ -27,7 +27,7 @@ Explore the live Heroku demo [here](https://jheeebert-redux-store-26f3a438bda0.h
 ![Backend2](./screenshots/backEnd2Image.png)
 ![Backend3](./screenshots/backEnd3Image.png)
 ## License
-This project is licensed under the [MIT License](LICENSE).
+[![GitHub license](https://badgen.net/github/license/jheeebert/redux-store)](LICENSE)
 ## Contributing
 We welcome contributions! If you'd like to contribute, please follow these steps:
 1. Fork the repository on GitHub.
@@ -38,4 +38,4 @@ We welcome contributions! If you'd like to contribute, please follow these steps
 ## Questions
 Feel free to reach out if you have any questions:
 - GitHub: [Jheeebert](https://github.com/Jheeebert/)
-- Email: wdfuzz8823@gmail.com
+- Email: jheeebertwd@gmail.com
