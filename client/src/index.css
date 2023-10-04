@@ -46,10 +46,49 @@ h6 {
 
 h1 {
   font-size: 2.25rem;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 1.75rem;
+  }
+  @media (max-width: 320px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 240px) {
+    font-size: 1.25rem;
+  }
+  @media (max-width: 200px) {
+    font-size: 1.125rem;
+  }
+  @media (max-width: 160px) {
+    font-size: 1rem;
+  }
 }
 
 h2 {
   font-size: 2rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-transform: uppercase;
+  text-align: center;
+  @media (max-width: 1024px) {
+    font-size: 1.75rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 320px) {
+    font-size: 1.25rem;
+  }
+  @media (max-width: 240px) {
+    font-size: 1.125rem;
+  }
 }
 
 h3 {
@@ -269,7 +308,7 @@ input:focus {
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: .25px;
+  letter-spacing: 0.25px;
   outline: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   &:hover {
@@ -286,6 +325,9 @@ input:focus {
   background-color: #0056b3;
 }
 
+.category-menu__button--active {
+  background-color: #030d16;
+}
 @media screen and (max-width: 768px) {
   .card {
     width: 100%;
