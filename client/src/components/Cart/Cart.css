@@ -1,0 +1,52 @@
+:root {
+  --primary: #093870; /* Dark Blue */
+  --secondaryCart: #16466d; /* Light Blue */
+  --tertiary: #b12704;
+  --light: #fafafa;
+  --cartMid: #dadff5;
+  --dark: #272f32;
+  --error: rgb(130, 1, 228);
+  --spacing-one: calc(1rem * 0.5);
+  --spacing-two: calc(1rem);
+}
+/* Cart container */
+.cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px; /* Adjust the width as needed */
+  max-height: 80vh; /* Adjust the max height as needed */
+  background-color: var(--cartMid);
+  overflow: auto;
+  padding: 1rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 0.5rem;
+  transition: transform 0.3s ease; /* Add smooth transition */
+}
+
+/* Initially hidden */
+.cart.cart-closed {
+  transform: translateX(100%);
+}
+
+/* Cart open */
+.cart.cart-open {
+  transform: translateX(0);
+}
+
+/* Close button */
+.close {
+  cursor: pointer;
+  color: var(--secondaryCart);
+  font-size: 1.2rem;
+}
+.close:hover {
+  text-decoration: underline;
+}
+/* Cart emoji */
+.cart-closed::before {
+  content: "🛒"; /* Unicode for cart emoji */
+  font-size: 2rem;
+  margin-right: 0.5rem;
+position: fixed;
+}
