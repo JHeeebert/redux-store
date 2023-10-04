@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
+import styles from "./Login.module.css"; // Import the CSS module
 const MySwal = withReactContent(Swal);
 
 function Signup() {
@@ -45,6 +46,7 @@ function Signup() {
       });
     }
   };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -53,9 +55,11 @@ function Signup() {
     });
   };
   return (
-    <div className="container my-1">
-      <Link to="/login">← Go to Login</Link>
-      <h2>Signup</h2>
+    <div className={styles.container}>
+      <Link to="/login" className={styles.link}>
+        ← Go to Login
+      </Link>
+      <h2 className={styles.heading}>Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="firstName">First Name:</label>
