@@ -1,73 +1,67 @@
-# redux-store
-# Description 📈
-```md
-AS a senior engineer working on an e-commerce platform
-I WANT my platform to use Redux to manage global state instead of the Context API
-SO THAT my website's state management is taken out of the React ecosystem
-```
+# Redux Store
 
-# Acceptance Criteria 📝
-```md
-GIVEN an e-commerce platform that uses Redux to manage global state
-WHEN I review the app’s store
-THEN I find that the app uses a Redux store instead of the Context API
-WHEN I review the way the React front end accesses the store
-THEN I find that the app uses a Redux provider
-WHEN I review the way the app determines changes to its global state
-THEN I find that the app passes reducers to a Redux store instead of using the Context API
-WHEN I review the way the app extracts state data from the store
-THEN I find that the app uses Redux instead of the Context API
-WHEN I review the way the app dispatches actions
-THEN I find that the app uses Redux instead of the Context API
-```
-# Table of Contents 📓
+## Description
 
-- [redux-store](#redux-store)
-- [Description 📈](#description-)
-- [Acceptance Criteria 📝](#acceptance-criteria-)
-- [Table of Contents 📓](#table-of-contents-)
-- [Installation 💻](#installation-)
-- [Usage 📎](#usage-)
-- [License 📂](#license-)
-- [Contributing 🔍](#contributing-)
-- [Questions ❓📧❔](#questions-)
+As a senior engineer working on an e-commerce platform, I aimed to manage the platform's global state using Redux instead of the Context API. This move enhances the platform's state management, removing it from the React ecosystem.
 
-# Installation 💻
+## Table of Contents
 
-- npm i (to install all dependencies)
-- npm start (to start the app)
+- [Redux Store](#redux-store)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Screenshots](#screenshots)
+  - [License](#license)
+  - [Contributing](#contributing)
+  - [Questions](#questions)
 
-# Usage 📎
+## Installation
 
-Live Heroku Link: https://jheeebert-redux-store-26f3a438bda0.herokuapp.com/
+To get started, follow these steps:
 
-   <strong>Main Page</strong> <br>
-   ![Main Page](./screenshots/mainPage.png) <br>
-   <strong>Cart</strong> <br>
-   ![Cart](./screenshots/cartImage.png) <br>
-   <strong>Order History</strong> <br>
-   ![OderHistory](./screenshots/orderHistoryImage.png) <br>
+1. Clone the repository: `git clone https://github.com/Jheeebert/redux-store.git`
 
+2. Navigate to the project directory: `cd redux-store`
 
-# License 📂
-[![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+3. Install the dependencies: `npm install`
 
-# Contributing 🔍
+4. Start the application: `npm start`
 
-[Contributors Covenant](https://www.contributor-covenant.org/) <br>
+## Usage
+
+Explore the live Heroku demo [here](https://jheeebert-redux-store-26f3a438bda0.herokuapp.com/).
+
+### Screenshots
+
+![Main Page](./screenshots/mainPage.png)
+
+![Cart](./screenshots/cartImage.png)
+
+![Order History](./screenshots/orderHistoryImage.png)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contributing
+
+We welcome contributions! If you'd like to contribute, please follow these steps:
 
 1. Fork the repository on GitHub.
-2. Create a new branch with a descriptive name: `git checkout -b my-branch`
-3. Make the necessary changes and commit them: ` git commit -m "Description of changes"`
-4. Push your changes to your forked repository: `git push origin my-branch`
-   <br>
-   [![GitHub commits](https://badgen.net/github/commits/Jheeebert/redux-store)](https://GitHub.com/Jheeebert/redux-store/commit/)
-   [![GitHub latest commit](https://badgen.net/github/redux-store/last-commit/Jheeebert/pwa-text-editor)](https://GitHub.com/Jheeebert/redux-store/commit/)
-   [![GitHub forks](https://img.shields.io/github/forks/Jheeebert/redux-store.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/Jheeebert/redux-store/network/)
-   <br>
-# Questions ❓📧❔
 
-[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Jheeebert/redux-store) <br>
-* If you have any questions about the repo, open an issue @ link above or contact me directly at:  📧 wdfuzz8823@gmail.com 📧. <br>
-* You can find more of my work at 🔖 [Jheeebert](https://github.com/Jheeebert/) 🔖. <br>
-[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+2. Create a new branch: `git checkout -b my-branch`
+
+3. Make your changes and commit them: `git commit -m "Description of changes"`
+
+4. Push to your branch: `git push origin my-branch`
+
+5. Open a pull request [here](https://github.com/Jheeebert/redux-store/pulls)
+
+## Questions
+
+Feel free to reach out if you have any questions:
+
+- GitHub: [Jheeebert](https://github.com/Jheeebert/)
+
+- Email: wdfuzz8823@gmail.com
