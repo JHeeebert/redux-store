@@ -15,20 +15,24 @@ class AuthService {
   isTokenExpired(token) {
     try {
       const decoded = decode(token);
-      return decoded.exp < Date.now() / 1000;
+      if (decoded.exp < Date.now() / 1000) {
+        return true;
+      } else return false;
     } catch (err) {
-      return true; // Token is considered expired if decoding fails
+      return false;
     }
   }
   getToken() {
     return localStorage.getItem(this.tokenKey);
   }
-  setToken(idToken) {
+  login(idToken) {
     localStorage.setItem(this.tokenKey, idToken);
+    window.location.assign("/");
   }
   logout() {
     localStorage.removeItem(this.tokenKey);
     window.location.assign("/");
   }
 }
+
 export default new AuthService();
