@@ -18,83 +18,104 @@ const defaultState = {
   currentCategory: "",
 };
 
-// Reducers must return new state, not mutate the original state.
+const handleUpdateProducts = (state, action) => {
+  // Updates the products in the state with new data from action
+  return {
+    ...state,
+    products: [...action.products],
+  };
+};
+
+const handleAddToCart = (state, action) => {
+  return {
+    ...state,
+    cartOpen: true,
+    cart: [...state.cart, action.product],
+  };
+};
+
+const handleAddMultipleToCart = (state, action) => {
+  return {
+    ...state,
+    cart: [...state.cart, ...action.products],
+  };
+};
+
+const handleUpdateCartQuantity = (state, action) => {
+  return {
+    ...state,
+    cartOpen: true,
+    cart: state.cart.map((product) => {
+      if (action._id === product._id) {
+        product.purchaseQuantity = action.purchaseQuantity;
+      }
+      return product;
+    }),
+  };
+};
+
+const handleRemoveFromCart = (state, action) => {
+  const newState = state.cart.filter((product) => {
+    return product._id !== action._id;
+  });
+
+  return {
+    ...state,
+    cartOpen: newState.length > 0,
+    cart: newState,
+  };
+};
+
+const handleClearCart = (state) => {
+  return {
+    ...state,
+    cartOpen: false,
+    cart: [],
+  };
+};
+
+const handleToggleCart = (state) => {
+  return {
+    ...state,
+    cartOpen: !state.cartOpen,
+  };
+};
+
+const handleUpdateCategories = (state, action) => {
+  // Updates the categories in the state with new data from action
+  return {
+    ...state,
+    categories: [...action.categories],
+  };
+};
+
+const handleUpdateCurrentCategory = (state, action) => {
+  return {
+    ...state,
+    currentCategory: action.currentCategory,
+  };
+};
+
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
-    // TODO: Add a comment describing the functionality of the UPDATE_PRODUCTS case
-    // Updates the products in the state with new data from action
     case UPDATE_PRODUCTS:
-      return {
-        ...state,
-        products: [...action.products],
-      };
-
+      return handleUpdateProducts(state, action);
     case ADD_TO_CART:
-      return {
-        ...state,
-        cartOpen: true,
-        cart: [...state.cart, action.product],
-      };
-
+      return handleAddToCart(state, action);
     case ADD_MULTIPLE_TO_CART:
-      return {
-        ...state,
-        cart: [...state.cart, ...action.products],
-      };
-    // TODO: Add a comment describing the functionality of the UPDATE_CART_QUANTITY case
-    // Your comment here
+      return handleAddMultipleToCart(state, action);
     case UPDATE_CART_QUANTITY:
-      return {
-        ...state,
-        cartOpen: true,
-        cart: state.cart.map((product) => {
-          if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity;
-          }
-          return product;
-        }),
-      };
-
-    // TODO: Add a comment describing the functionality of the REMOVE_FROM_CART case
-    //  Removes a product from the shopping cart in the state
+      return handleUpdateCartQuantity(state, action);
     case REMOVE_FROM_CART:
-      let newState = state.cart.filter((product) => {
-        return product._id !== action._id;
-      });
-
-      return {
-        ...state,
-        cartOpen: newState.length > 0,
-        cart: newState,
-      };
-
+      return handleRemoveFromCart(state, action);
     case CLEAR_CART:
-      return {
-        ...state,
-        cartOpen: false,
-        cart: [],
-      };
-
+      return handleClearCart(state);
     case TOGGLE_CART:
-      return {
-        ...state,
-        cartOpen: !state.cartOpen,
-      };
-
+      return handleToggleCart(state);
     case UPDATE_CATEGORIES:
-      return {
-        ...state,
-        categories: [...action.categories],
-      };
-
+      return handleUpdateCategories(state, action);
     case UPDATE_CURRENT_CATEGORY:
-      return {
-        ...state,
-        currentCategory: action.currentCategory,
-      };
-
-    // TODO: Add a comment describing what the default case is for
-    // Returns the current state when no matching action
+      return handleUpdateCurrentCategory(state, action);
     default:
       return state;
   }
