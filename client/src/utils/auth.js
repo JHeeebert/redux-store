@@ -1,45 +1,34 @@
-import decode from 'jwt-decode';
-
+/* eslint-disable import/no-anonymous-default-export */
+import decode from "jwt-decode";
 class AuthService {
-  getProfile() {
-    return decode(this.getToken());
+  constructor() {
+    this.tokenKey = "id_token";
   }
-
+  getProfile() {
+    const token = this.getToken();
+    return token ? decode(token) : null;
+  }
   loggedIn() {
-    // Checks if there is a saved token and it's still valid
     const token = this.getToken();
     return !!token && !this.isTokenExpired(token);
   }
-
   isTokenExpired(token) {
     try {
       const decoded = decode(token);
-      if (decoded.exp < Date.now() / 1000) {
-        return true;
-      } else return false;
+      return decoded.exp < Date.now() / 1000;
     } catch (err) {
-      return false;
+      return true; // Token is considered expired if decoding fails
     }
   }
-
   getToken() {
-    // Retrieves the user token from localStorage
-    return localStorage.getItem('id_token');
+    return localStorage.getItem(this.tokenKey);
   }
-
-  login(idToken) {
-    // Saves user token to localStorage
-    localStorage.setItem('id_token', idToken);
-
-    window.location.assign('/');
+  setToken(idToken) {
+    localStorage.setItem(this.tokenKey, idToken);
   }
-
   logout() {
-    // Clear user token and profile data from localStorage
-    localStorage.removeItem('id_token');
-    // this will reload the page and reset the state of the application
-    window.location.assign('/');
+    localStorage.removeItem(this.tokenKey);
+    window.location.assign("/");
   }
 }
-
 export default new AuthService();
